@@ -6,7 +6,7 @@ compatibility_date = "2025-12-01"
 # Prevents duplicate alerts within cooldown windows
 [[kv_namespaces]]
 binding = "HEALTH_KV"
-id = "local-dev-placeholder"  # Run: npx wrangler kv namespace create HEALTH_KV
+id = "c3932d5ee4c446b6b0c7bf5d3a76581d"
 
 # Cron triggers — balance checks run on a schedule
 # Every 30 minutes during business hours, every 2 hours off-peak
