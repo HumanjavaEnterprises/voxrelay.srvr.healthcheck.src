@@ -8,18 +8,20 @@ compatibility_date = "2025-12-01"
 binding = "HEALTH_KV"
 id = "c3932d5ee4c446b6b0c7bf5d3a76581d"
 
-# Cron triggers — balance checks run on a schedule
-# Every 30 minutes during business hours, every 2 hours off-peak
+# Cron triggers — balance checks + TTS warmup
+# Every 5 min during business hours keeps RunPod GPU warm (idle timeout ~5-10 min)
+# Every 2 hours off-peak for baseline monitoring
 [triggers]
 crons = [
-  "*/30 9-21 * * *",   # Every 30 min, 9 AM – 9 PM ET (peak call hours)
-  "0 */2 * * *"         # Every 2 hours (baseline, covers overnight)
+  "*/5 9-21 * * 1-5",   # Every 5 min, 9 AM – 9 PM ET, weekdays (TTS warmup + balance)
+  "0 */2 * * *"          # Every 2 hours (baseline, covers overnight/weekends)
 ]
 
 # Environment variables (non-secret — secrets go in .dev.vars)
 [vars]
 ENVIRONMENT = "development"
 VOXRELAY_VERSION = "0.1.0"
+RUNPOD_TTS_URL = "https://api.runpod.ai/v2/avwvzx32m18mhu/run"
 
 # Balance thresholds (USD) — override in .dev.vars for prod
 RUNPOD_BALANCE_WARN = "10.00"

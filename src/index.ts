@@ -40,6 +40,12 @@ async function handleCron(
     fetchTwilioBalance(env.TWILIO_ACCOUNT_SID, env.TWILIO_AUTH_TOKEN),
   ]);
 
+  // Warm up the Chatterbox TTS GPU worker — send a tiny request
+  // so it stays loaded and doesn't cold-start on real calls
+  if (env.RUNPOD_API_KEY && env.RUNPOD_TTS_URL) {
+    ctx.waitUntil(warmupTTS(env.RUNPOD_API_KEY, env.RUNPOD_TTS_URL));
+  }
+
   const balances = [runpod, twilio];
   const alerts = await buildAlerts(balances, env);
 
@@ -67,6 +73,33 @@ async function handleCron(
   console.log(
     `[cron] Done. Status: ${report.status}, RunPod: $${runpod.balance}, Twilio: $${twilio.balance}`
   );
+}
+
+// ─── TTS Warmup ─────────────────────────────────────────
+// Sends a tiny TTS request to keep the RunPod GPU worker loaded.
+// Uses /run (async) so we don't wait for the result — just need
+// the worker to wake up and stay warm.
+async function warmupTTS(apiKey: string, ttsUrl: string): Promise<void> {
+  try {
+    const response = await fetch(ttsUrl, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input: {
+          text: "Warmup.",
+          exaggeration: 0.3,
+          cfg_weight: 0.5,
+        },
+      }),
+    });
+    const result = await response.json() as { id?: string; status?: string };
+    console.log(`[warmup] TTS ping: ${result.status || "sent"} (job: ${result.id || "?"})`);
+  } catch (err) {
+    console.log(`[warmup] TTS ping failed: ${err instanceof Error ? err.message : String(err)}`);
+  }
 }
 
 // ─── Export ──────────────────────────────────────────────

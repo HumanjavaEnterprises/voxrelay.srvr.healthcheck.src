@@ -5,6 +5,7 @@ export interface Env {
 
   // RunPod
   RUNPOD_API_KEY: string;
+  RUNPOD_TTS_URL?: string;  // Chatterbox endpoint for warmup pings
 
   // Twilio
   TWILIO_ACCOUNT_SID: string;
