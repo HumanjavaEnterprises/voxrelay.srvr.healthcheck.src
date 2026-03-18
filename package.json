@@ -1,0 +1,22 @@
+{
+  "name": "voxrelay-healthcheck",
+  "version": "0.1.0",
+  "description": "VoxRelay Healthcheck — balance monitoring & alerting for RunPod, Twilio, and Cloudflare",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test:balances": "npx tsx test/test-balances.ts",
+    "test:alerts": "npx tsx test/test-alerts.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250301.0",
+    "typescript": "^5.4.0",
+    "wrangler": "^3.80.0",
+    "tsx": "^4.7.0"
+  }
+}

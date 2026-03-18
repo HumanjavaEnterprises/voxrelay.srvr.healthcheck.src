@@ -1,0 +1,32 @@
+# VoxRelay Healthcheck — Environment Variables
+# Copy this to .dev.vars and fill in your values
+# NEVER commit .dev.vars to git
+
+# ─── RunPod ───────────────────────────────────────────────
+RUNPOD_API_KEY=rpa_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# ─── Twilio ───────────────────────────────────────────────
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=your_auth_token_here
+
+# ─── Cloudflare (for Workers AI usage, optional) ─────────
+CLOUDFLARE_ACCOUNT_ID=your_account_id_here
+CLOUDFLARE_API_TOKEN=your_api_token_here
+
+# ─── Alert Thresholds (USD) ──────────────────────────────
+# Alerts fire when balance drops below these values
+RUNPOD_BALANCE_WARN=10.00
+RUNPOD_BALANCE_CRITICAL=3.00
+TWILIO_BALANCE_WARN=20.00
+TWILIO_BALANCE_CRITICAL=5.00
+
+# ─── Alert Channels ──────────────────────────────────────
+# Slack incoming webhook URL (optional)
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/T00/B00/xxxx
+
+# Twilio SMS alert (uses same Twilio creds above)
+ALERT_SMS_TO=+14168787469
+ALERT_SMS_FROM=+12505551234
+
+# Email via Cloudflare Email Workers (optional)
+ALERT_EMAIL_TO=vergel@humanjava.com
