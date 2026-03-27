@@ -81,8 +81,12 @@ Status codes: 200 healthy/warn, 503 critical, 404 no cached report yet.
 
 - `voxrelay.srvr.voicetool.src` — Voice tool Worker (CF Workers + DO)
 - `voxrelay.srvr.voiceLLM.src` — Voice LLM Worker (TTS/STT on RunPod)
+- `voxrelay.srvr.dell-voiceLLM.src` — Sovereign call engine on Dell Blackwell (Deepgram STT/TTS + local LLM)
+- `voxrelay.srvr.pipecat.src` — Pipecat-based voice pipeline on Dell
 - `voxrelay.app.web.src` — Web dashboard (React + CF Pages)
 - `voxrelay.app.web-lite.src` — Lite tier frontend
+
+**Note:** The Dell sovereign path (`dell-voiceLLM` / `pipecat`) has different cost monitoring needs — no RunPod dependency, Deepgram is the only paid external service (STT/TTS). Twilio still applies for phone routing.
 
 ## Working Rules
 
