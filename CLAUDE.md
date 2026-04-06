@@ -79,7 +79,6 @@ Status codes: 200 healthy/warn, 503 critical, 404 no cached report yet.
 
 ## Related Repos
 
-- `voxrelay.srvr.voicetool.src` — Voice tool Worker (CF Workers + DO)
 - `voxrelay.srvr.voiceLLM.src` — Voice LLM Worker (TTS/STT on RunPod)
 - `voxrelay.srvr.dell-voiceLLM.src` — Sovereign call engine on Dell Blackwell (Deepgram STT/TTS + local LLM)
 - `voxrelay.srvr.pipecat.src` — Pipecat-based voice pipeline on Dell
