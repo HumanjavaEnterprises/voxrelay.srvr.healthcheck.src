@@ -19,7 +19,7 @@ crons = [
 
 # Environment variables (non-secret — secrets go in .dev.vars)
 [vars]
-ENVIRONMENT = "development"
+ENVIRONMENT = "production"
 VOXRELAY_VERSION = "0.1.0"
 RUNPOD_TTS_URL = "https://api.runpod.ai/v2/avwvzx32m18mhu/run"
 
