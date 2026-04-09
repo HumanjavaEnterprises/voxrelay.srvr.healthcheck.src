@@ -192,7 +192,7 @@ voxrelay.srvr.healthcheck.src/
 
 - [ ] Cloudflare billing provider (Workers AI usage tracking)
 - [ ] Twilio UsageTrigger webhook as push-based backup
-- [ ] Deepgram balance check (used by Dell sovereign path via `dell-voiceLLM` / `pipecat`)
+- [ ] Deepgram balance check (legacy — voiceLLM now uses local Whisper STT)
 - [ ] Balance trend tracking in D1 (daily snapshots, burn rate graphs)
 - [ ] Runway projection alerts ("RunPod will run out in ~4 hours at current rate")
 - [ ] Integration with VoxRelay dashboard (embed health widget)
