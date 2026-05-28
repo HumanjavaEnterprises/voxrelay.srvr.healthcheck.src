@@ -80,8 +80,7 @@ Status codes: 200 healthy/warn, 503 critical, 404 no cached report yet.
 ## Related Repos
 
 - `voxrelay.srvr.voiceLLM.src` — Sovereign voice engine (Dell primary, RunPod burst) — Voxtral TTS + Qwen3 LLM + Whisper STT + Pipecat
-- `voxrelay.app.web.src` — Web dashboard (React + CF Pages)
-- `voxrelay.app.web-lite.src` — Lite tier frontend
+- `voxrelay.app.web.src` — Web dashboard (React + CF Pages; serves all tiers — no separate `web-lite` frontend exists)
 
 **Note:** The Dell sovereign path has different cost monitoring needs — no RunPod dependency (unless burst), local Whisper STT + Voxtral TTS = zero compute cost. Twilio still applies for phone routing.
 
