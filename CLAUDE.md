@@ -63,8 +63,8 @@ npx wrangler deploy --dry-run  # Verify build without deploying
 
 ## Cron Schedule
 
-- `*/30 9-21 * * *` — Every 30 min during business hours (peak calls)
-- `0 */2 * * *` — Every 2 hours overnight (baseline)
+- `*/5 9-21 * * 1-5` — Every 5 min, weekdays 9 AM – 9 PM ET (TTS warmup + balance check)
+- `0 */2 * * *` — Every 2 hours, all week (baseline; covers overnight and weekends)
 
 ## API Endpoints
 
